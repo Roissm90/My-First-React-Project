@@ -1,0 +1,177 @@
+section.container-videogame {
+    width: 100%;
+    height: calc(100vh - 160px);
+
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+
+    > div.container__info-img {
+        width: 100%;
+
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 50px;
+
+        > img {
+            width: 90%;
+            max-width: 300px;
+            height: 150px;
+        }
+    
+        > p {
+            width: 100%;
+            max-width: 340px;
+            padding: 0 20px;
+
+            font-weight: bold;
+            color: #fff;
+        }
+    }
+
+    > div.container__characters {
+        width: 100%;
+       
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+
+        > ul.list-protagonist,
+        > ul.list-villain {
+            width: 250px;
+            height: 300px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            overflow: hidden;
+            position: relative;
+
+            > li.list__protagonist-item,
+            > li.list__villain-item {
+                position: absolute;
+                top: 0; 
+                left: 0;
+                transform: scale(0);
+
+                &.active {
+                    transition: all ease 1s;
+                    transform: scale(1);
+
+                    width: 250px;
+                    height: 300px;
+
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: center;
+                    align-items: center;
+
+                    > p {
+                        width: 100%;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        font-weight: bold;
+                        color: #fff;
+                    }
+
+                    > div {
+                        width: 250px;
+                        height: 300px;
+
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        > img {
+                            width: 170px;
+                            height: 200px;
+                        }
+                    }
+                }
+                
+            }
+
+            > button.button-left {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+
+                width: 30px;
+                height: 30px;
+
+                background-color: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+
+                > img {
+                    width: 100%;
+                    height: 100%;
+                    filter: invert(1);
+                }
+            }
+
+            > button.button-right {
+                position: absolute;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+
+                background-color: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+
+                width: 30px;
+                height: 30px;
+
+                > img {
+                    width: 100%;
+                    height: 100%;
+                    filter: invert(1);
+                }
+            }
+        }
+    } 
+}
+
+@media screen and (min-width: 768px) {
+    section.container-videogame {
+
+        > div.container__info-img {
+            > p {
+                max-width: 100%;
+            }
+        }
+
+        > div.container__characters {
+            justify-content: space-around;
+            gap: 0px;
+        }
+    }
+}
+
+@media screen and (min-height: 1025px) {
+    section.container-videogame {
+
+        > div.container__characters {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+    }
+}

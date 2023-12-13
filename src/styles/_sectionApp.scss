@@ -1,0 +1,74 @@
+section.container-main {
+    width: 100%;
+    height: calc(100vh - 160px);
+    overflow-y: scroll;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    position: relative;
+    padding: 0 100px;
+
+    > a.container__videogame {
+        width: 70%;
+        max-width: 250px;
+        height: 150px;
+
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+
+        > img {
+            width: 100%;
+            height: 100%;
+        }
+
+        > ul.game-info {
+            width: 100%;
+            height: 100%;
+            
+            transform: scale(0);
+            border-radius: 20px;
+        }
+
+
+        &:hover {
+            transition: all ease 0.5s;
+            transform: scale(1.1);
+            box-shadow: 10px 10px 24px 0px rgba(0,0,0,1);
+
+            > ul.game-info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                transition: all ease 1s;
+                transform: scale(1);
+
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                background-color: #0000008d;
+                backdrop-filter: blur(5px);
+
+                > li {
+                    color: #fff;
+                    font-weight: bold;
+                }
+            }
+        }
+
+        > ul.container-characters {
+            display: none;
+        }
+
+        > ul.container-villains {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+@import 'app.scss';
+
+* {
+    list-style: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+body {
+    width: 100%;
+
+    #root {
+        width: 100%;
+    }
+}

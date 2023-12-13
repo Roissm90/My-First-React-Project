@@ -1,0 +1,16 @@
+.container-app {
+    width: 100%;
+    min-height: 100vh;
+    
+    background-image: url('../images/main-bg.png');
+    background-position: center;
+    background-size: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    overflow: hidden;
+}

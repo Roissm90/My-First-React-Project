@@ -1,0 +1,30 @@
+.container-app {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../images/main-bg.png");
+  background-position: center;
+  background-size: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  overflow: hidden;
+}
+
+* {
+  list-style: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+body {
+  width: 100%;
+}
+body #root {
+  width: 100%;
+}/*# sourceMappingURL=main.css.map */

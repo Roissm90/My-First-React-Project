@@ -1,0 +1,123 @@
+section.container-invocaciones {
+    width: 100%;
+    height: calc(100vh - 160px);
+    overflow-y: scroll;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+
+    padding: 30px 0;
+
+    > figure.container__invocacion {
+        width: 90%;
+        max-width: 450px;
+
+        overflow-y: scroll;
+        border-radius: 10px;
+        padding: 10px 0;
+        transition: all ease 0.5s;
+        overflow-y: hidden;
+        cursor: pointer;
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: flex-start;
+
+        position: relative;
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 10px 10px 24px 0px rgba(0,0,0,1);
+        }
+
+        > h2 {
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            font-weight: bold;
+            font-size: 30px;
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+
+        > div.container__invocacion-picture {
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transform: scale(0);
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            position: absolute;
+            top: 44px;
+            left: 0;
+
+            background-color: #ffffffe4;
+
+            > img {
+                width: 200px;
+                height: 200px;  
+            }
+
+            &.expanded {
+                transition: all ease 1s;
+                transform: scale(1);
+                overflow-y: hidden;
+            }
+        }
+
+        > div.container__invocacion-info {
+            width: 100%;
+
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+            > p {
+                width: 100%;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                padding: 20px;
+                font-weight: bold;
+                color: #fff;
+            }
+
+            > ul {
+                width: 100%;
+
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 5px;
+
+                padding: 20px;
+
+                > li {
+                    width: 100%;
+
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    font-weight: bold;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

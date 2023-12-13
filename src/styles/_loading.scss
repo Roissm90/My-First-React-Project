@@ -1,0 +1,38 @@
+section.container-main {
+  width: 100%;
+  height: calc(100vh - 160px);
+
+  overflow-y: scroll;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  position: relative;
+  padding: 0 100px;
+
+  > div.container-loading {
+    width: 100%;
+    height: calc(100vh - 160px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    > img {
+      width: 70%;
+      max-width: 600px;
+      animation: bounce 1s ease-in-out infinite;
+    }
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0); // Posición inicial y final
+    }
+    50% {
+      transform: translateY(-20px); // Posición máxima de "rebote"
+    }
+  }
+}
