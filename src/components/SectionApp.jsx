@@ -8,12 +8,24 @@ function SectionApp({ videojuegos }) {
     const [games, setGames] = useState([]);
 
     useEffect(() => {
-        // Simular una solicitud de API con un tiempo de espera ficticio (3 segundos)
-        setTimeout(() => {
-            setGames(videojuegos);
-            setLoading(false);
-        }, 3300); // Esto debería ser reemplazado con tu lógica de llamada a la API real
-    }, [videojuegos]);
+        const fetchData = async () => {
+            try {
+                // Realizar la solicitud a la API
+                const response = await fetch('https://node-db-ff.vercel.app/videojuegosFF');
+                if (!response.ok) {
+                    throw new Error('Error al obtener los datos');
+                }
+                const data = await response.json();
+                
+                setGames(data);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     let content;
     if (loading) {
@@ -44,4 +56,5 @@ function SectionApp({ videojuegos }) {
         </section>
     );
 }
+
 export default SectionApp;
