@@ -10,7 +10,6 @@ function SectionApp({ videojuegos }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Realizar la solicitud a la API
                 const response = await fetch('https://node-db-ff.vercel.app/videojuegosFF');
                 if (!response.ok) {
                     throw new Error('Error al obtener los datos');
