@@ -34,7 +34,7 @@ function Monstruos() {
                     <div className={`container__invocacion-picture ${index === expandedIndex ? 'expanded' : ''}`}>
                         <img src={monstruo.picture} alt="" />
                     </div>
-                    <div className="container__invocacion-info">
+                    <div className={`container__invocacion-info ${index === expandedIndex ? 'expanded' : ''}`}>
                         <p>{monstruo.info}</p>
                         {monstruo.hability && (
                             <ul>

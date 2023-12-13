@@ -34,7 +34,7 @@ function Invocaciones() {
                     <div className={`container__invocacion-picture ${index === expandedIndex ? 'expanded' : ''}`}>
                         <img src={invocacion.picture} alt="" />
                     </div>
-                    <div className="container__invocacion-info">
+                    <div className={`container__invocacion-info ${index === expandedIndex ? 'expanded' : ''}`}>
                         <p>{invocacion.info}</p>
                         {invocacion.relatedMagic && (
                             <ul>

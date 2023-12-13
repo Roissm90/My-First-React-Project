@@ -14,12 +14,13 @@ section.container-jobs {
     > article.container__job {
         width: 80%;
         max-width: 1000px;
-        height: 250px;
+        height: 290px;
 
         position: relative;
         overflow: hidden;
         cursor: pointer;
         border-radius: 10px;
+        padding: 20px 0;
 
         transition: all ease 1s;
 
@@ -48,6 +49,10 @@ section.container-jobs {
                 justify-content: center;
                 align-items: center;
 
+                &.expanded {
+                    visibility: hidden;
+                }
+
                 &:first-child {
                     padding-bottom: 10px;
                     border-bottom: 1px solid #fff;
@@ -73,7 +78,6 @@ section.container-jobs {
 
             transition: all ease 1s;
             transform: translateY(200%);
-            background-color: #ffffffd1;
             border-radius: 0 0 10px 10px;
 
             > img {

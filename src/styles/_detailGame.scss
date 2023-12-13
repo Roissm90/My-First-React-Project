@@ -120,7 +120,15 @@ section.container-videogame {
                 > img {
                     width: 100%;
                     height: 100%;
+
                     filter: invert(1);
+                    transition: all ease 0.5s;
+                }
+
+                &:hover {
+                    > img {
+                        transform: scale(120%);
+                    }
                 }
             }
 
@@ -142,6 +150,13 @@ section.container-videogame {
                     width: 100%;
                     height: 100%;
                     filter: invert(1);
+                    transition: all ease 0.5s;
+                }
+
+                &:hover {
+                    > img {
+                        transform: scale(120%);
+                    }
                 }
             }
         }

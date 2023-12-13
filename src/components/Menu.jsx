@@ -16,8 +16,8 @@ function Menu() {
             <ul className={menuVisible ? 'active' : ''}>
                 <li onClick={handleTogleMenu}><Link to="/protagonistas">Protagonistas</Link></li>
                 <li onClick={handleTogleMenu}><Link to="/antagonistas">Antagonistas</Link></li>
-                <li onClick={handleTogleMenu}><Link to="/invocaciones">Invocaciones</Link></li>
                 <li onClick={handleTogleMenu}><Link to="/jobs">Job´s</Link></li>
+                <li onClick={handleTogleMenu}><Link to="/invocaciones">Invocaciones</Link></li>
                 <li onClick={handleTogleMenu}><Link to="/monstruos">Monstruos</Link></li>
                 <div className="container-close_menu" onClick={handleTogleMenu}><img src={CloseMenu} alt="" /></div>
             </ul>

@@ -9,7 +9,7 @@ header.container-nav-title {
     
     > h1 {
         width: 230px;
-        height: 40px;
+        height: 50px;
 
         display: flex;
         justify-content: center;
@@ -17,6 +17,7 @@ header.container-nav-title {
         
         transition: all ease 0.5s;
         border-radius: 10px;
+        padding: 5px 0;
 
         &:hover {
             transform: scale(1.05);
@@ -152,6 +153,14 @@ header.container-nav-title {
                 > a {
                     color: #000;
                 }
+
+                &:hover {
+                    background-color: #000;
+
+                    > a {
+                        color: #fff;
+                    }
+                }
             }
 
             > div.container-close_menu {
@@ -162,6 +171,14 @@ header.container-nav-title {
                 position: absolute;
                 top: 20px;
                 right: 20px;
+
+                &:hover {
+                    background-color: #000;
+
+                    > img {
+                        filter: invert(1);
+                    }
+                }
             }
         }
         > div.container-burger_menu {

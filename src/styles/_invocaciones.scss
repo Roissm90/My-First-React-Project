@@ -61,11 +61,9 @@ section.container-invocaciones {
             top: 44px;
             left: 0;
 
-            background-color: #ffffffe4;
-
             > img {
-                width: 200px;
-                height: 200px;  
+                width: 70%;
+                height: 70%;  
             }
 
             &.expanded {
@@ -83,6 +81,10 @@ section.container-invocaciones {
             justify-content: center;
             align-items: center;
             gap: 20px;
+
+            &.expanded {
+                visibility: hidden;
+            }
 
             > p {
                 width: 100%;
