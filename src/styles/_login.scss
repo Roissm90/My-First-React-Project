@@ -1,0 +1,89 @@
+form {
+    width: 90%;
+    max-width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid #fff;
+    backdrop-filter: blur(20px);
+
+    > div:first-child {
+        width: 100%;
+        
+        padding: 10px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+
+        > img:first-child {
+            width: 70%;
+            height: 60px;
+        }
+    }
+
+    > label:nth-child(2) {
+        width: 80%;
+
+        > input {
+            width: 100%;
+
+            border: none;
+            outline: none;
+            padding: 10px;
+        }
+    }
+
+    > label:nth-child(3) {
+        width: 80%;
+
+        position: relative;
+
+        > input {
+            width: 100%;
+
+            border: none;
+            outline: none;
+            padding: 10px;
+        }
+
+        > button.container__img-show {
+            width: 40px;
+            height: 20px;
+
+            position: absolute;
+            top: 50%;
+            right: 0px;
+            transform: translateY(-50%);
+
+            border: none;
+            outline: none;
+            background-color: transparent;
+            cursor: pointer;
+
+            > img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    > button {
+        width: 90px;
+        height: 40px;
+
+        padding: 10px;
+        border-radius: 15px;
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+}

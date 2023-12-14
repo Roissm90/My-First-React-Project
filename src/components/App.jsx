@@ -9,6 +9,7 @@ import Invocaciones from "./Invocaciones";
 import Jobs from "./Jobs";
 import Monstruos from "./Monstruos";
 import { useEffect, useState } from "react";
+import Login from "./Login";
 
 function App() {
     const [videojuegos, setVideojuegos] = useState([]);
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/invocaciones" element={<Invocaciones/>}></Route>
                 <Route path="/monstruos" element={<Monstruos/>}></Route>
                 <Route path="/jobs" element={<Jobs/>}></Route>
+                <Route path="/login" element={<Login/>}></Route>
             </Routes>
             <Footer/>
         </div>
