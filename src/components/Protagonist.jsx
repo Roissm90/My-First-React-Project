@@ -26,7 +26,7 @@ function Protagonist() {
             <CharactersButton setJuegoSeleccionado={setJuegoSeleccionado} />
             <div>
                 {personajesFiltrados.map((personaje) => (
-                    <ul className="container__personaje" key={personaje.id}>
+                    <ul className="container__personaje" key={personaje._id}>
                         <li>{personaje.name}</li>
                         <li><img src={personaje.picture} alt="imagen del personaje" /></li>
                         <div>

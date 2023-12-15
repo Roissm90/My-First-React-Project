@@ -20,6 +20,7 @@ function Menu() {
                 <li onClick={handleTogleMenu}><Link to="/invocaciones">Invocaciones</Link></li>
                 <li onClick={handleTogleMenu}><Link to="/monstruos">Monstruos</Link></li>
                 <li onClick={handleTogleMenu}><Link to="/login">Login</Link></li>
+                <li onClick={handleTogleMenu}><Link to="/areapersonal">Mi FF</Link></li>
                 <div className="container-close_menu" onClick={handleTogleMenu}><img src={CloseMenu} alt="" /></div>
             </ul>
             <div className="container-burger_menu" onClick={handleTogleMenu}><img src={BurgerMenu} alt="" /></div>

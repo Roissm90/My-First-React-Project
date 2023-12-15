@@ -27,7 +27,7 @@ function Monstruos() {
             {monstruos.map((monstruo, index) => (
                 <figure
                     className={`container__invocacion`}
-                    key={monstruo.id}
+                    key={monstruo._id}
                     onClick={() => handleFigureClick(index)}
                 >
                     <h2>{monstruo.name}</h2>

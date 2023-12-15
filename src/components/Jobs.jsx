@@ -26,7 +26,7 @@ function Jobs() {
     return (
         <section className="container-jobs">
             {jobs.map((job, index) => (
-                <article className="container__job" key={job.id} onClick={() => handleImageClick(index)}>
+                <article className="container__job" key={job._id} onClick={() => handleImageClick(index)}>
                     <ul className="list-info">
                         <li>{job.trabajo}</li>
                         <li className={`list-item ${index === expandImg ? 'expanded' : ''}`}>{job.descripcion}</li>
@@ -34,7 +34,7 @@ function Jobs() {
                     </ul>
                     <div className={`container__job-images ${index === expandImg ? 'expanded' : ''}`}>
                     {job.personajesAsociados.map((asociados) => (
-                        <img src={asociados.picture} alt="" key={asociados.id}/>
+                        <img src={asociados.picture} alt="" key={asociados._id}/>
                     ))}
                     </div>
                 </article>

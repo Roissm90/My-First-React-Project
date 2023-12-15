@@ -27,7 +27,7 @@ function Invocaciones() {
             {invocaciones.map((invocacion, index) => (
                 <figure
                     className={`container__invocacion`}
-                    key={invocacion.id}
+                    key={invocacion._id}
                     onClick={() => handleFigureClick(index)}
                 >
                     <h2>{invocacion.name}</h2>

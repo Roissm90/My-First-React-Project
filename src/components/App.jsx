@@ -8,8 +8,12 @@ import Villains from "./Villains";
 import Invocaciones from "./Invocaciones";
 import Jobs from "./Jobs";
 import Monstruos from "./Monstruos";
+import AreaPersonal from "./AreaPersonal";
+import AuthRoute from "./middleware/AuthRoute";
 import { useEffect, useState } from "react";
 import Login from "./Login";
+import { UserProvider } from "./context/userContext";
+
 
 function App() {
     const [videojuegos, setVideojuegos] = useState([]);
@@ -23,7 +27,8 @@ function App() {
     }, [])
 
     return(
-        <div className="container-app">
+        <UserProvider>
+            <div className="container-app">
             <Menu/>
             <Routes>
                 <Route path="/" element={<SectionApp videojuegos={videojuegos}/>}></Route>
@@ -32,11 +37,13 @@ function App() {
                 <Route path="/antagonistas" element={<Villains/>}></Route>
                 <Route path="/invocaciones" element={<Invocaciones/>}></Route>
                 <Route path="/monstruos" element={<Monstruos/>}></Route>
+                <Route path="/areapersonal" element={<AuthRoute element={<AreaPersonal/>}/>}></Route>
                 <Route path="/jobs" element={<Jobs/>}></Route>
                 <Route path="/login" element={<Login/>}></Route>
             </Routes>
             <Footer/>
         </div>
+        </UserProvider>
     )
 }
 export default App;
