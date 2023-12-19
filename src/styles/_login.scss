@@ -76,6 +76,20 @@ form {
         }
     }
 
+    > p {
+        width: 80%;
+        opacity: 0;
+        color: #fff;
+
+        &.error-message {
+            opacity: 1;
+        }
+
+        &::before {
+            content: "* ";
+        }
+    }
+
     > button {
         width: 90px;
         height: 40px;

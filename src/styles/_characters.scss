@@ -22,9 +22,9 @@ section.container-personajes {
 
         > ul.container__personaje {
             width: 220px;
-            height: 220px;
-            overflow: scroll;
+            height: 240px;
             position: relative;
+            overflow-y: scroll;
 
             display: flex;
             flex-direction: column;
@@ -65,7 +65,6 @@ section.container-personajes {
                     transition: all ease 1s;
                     transform: scale(1);
                     backdrop-filter: blur(10px);
-                    overflow-y: scroll;
                 }
             }
         }

@@ -6,31 +6,30 @@ import { UserContext } from './context/userContext';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-    //const para funcionalidad del boton de enseñar contraseña
     const [showPassword, setShowPassword] = useState(false);
-    const passwordVisibility = () => {
-        setShowPassword(!showPassword);
-    };
-    
-    //const para reclamar contexto de users
     const { userList, setAuthenticatedUser } = useContext(UserContext);
-    console.log(userList);
-    //const para funcionalidad de comprobar usuarios
+    //console.log(userList);
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         emailInput: '',
         passwordInput: ''
     });
 
+    const [showError, setShowError] = useState(false);
+
     const handleInput = (event) => {
         const id = event.target.id;
         const value = event.target.value;
 
         setFormData({
-            ...formData, // si en este caso el id del que se cambia existe se cambia, si no existe crea uno
-            [id]: value, //coge el dato que referencia el 'id' y lo sustituye con el valor de 'value'
-        })
+            ...formData,
+            [id]: value,
+        });
     }
+
+    const passwordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const validateUser = (event) => {
         event.preventDefault();
@@ -44,11 +43,12 @@ function Login() {
             setAuthenticatedUser(foundUser);
             navigate('/areapersonal');
         } else {
-            console.log('Usuario encontrado.');
+            setShowError(true); // Mostrar mensaje de error
+            console.log('Usuario no encontrado.');
         }
     };
 
-    return(
+    return (
         <form action="" className="container-login" >
             <div className='container__logo'>
                 <img src={LoadingImage} alt="imagen de carga"/>
@@ -60,8 +60,11 @@ function Login() {
                 <input type={showPassword ? 'text' : 'password'} placeholder="Contraseña" id='passwordInput' name="password" required onChange={handleInput}/>
                 <button className='container__img-show' onClick={passwordVisibility}><img src={ShowPasswordImg} alt="" /></button>
             </label>
+            <p className={showError ? "error-message" : "hidden"}>Usuario o contraseña incorrectos</p>
             <button type="submit" onClick={validateUser}>Conectarse</button>
         </form>
     )
 }
+
 export default Login;
+// $2b$10$IW/5WlGjC0nQH5u0cvbR4e8mkjDi7MTlYDQi7doqjiA58FZSRyA6e
