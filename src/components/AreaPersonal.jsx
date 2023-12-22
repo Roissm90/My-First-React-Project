@@ -9,6 +9,7 @@ import '../styles/_areaPersonal.scss';
 function AreaPersonal({ videojuegos }) {
   const { authenticatedUser } = useContext(UserContext); //para poner el bienvenido
   const { personajesList } = useContext(PersonajesContext); //cojo contexto de personajes
+  console.log(personajesList);
 
   //logica de personajes aleatorios y solo 8
   const [personajesAleatorios, setPersonajesAleatorios] = useState([]);

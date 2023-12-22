@@ -27,7 +27,8 @@ function Login() {
         });
     }
 
-    const passwordVisibility = () => {
+    const passwordVisibility = (event) => {
+        event.preventDefault();
         setShowPassword(!showPassword);
     };
 
