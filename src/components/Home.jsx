@@ -26,11 +26,34 @@ function SectionApp({ videojuegos }) {
         fetchData();
     }, []);
 
+    /*
+    const [content, setContent] = useState(<Loading/>)
+    if (games) {
+        setContent(
+            games.map((juego) => (
+                <Link
+                    className="container__videogame"
+                    key={juego._id}
+                    to={`/detail/${juego.nombre}/${juego._id}`}
+                >
+                    <img src={juego.picture} alt="portada del videojuego" />
+                    <ul className="game-info">
+                        <li>{juego.nombre}</li>
+                        <li>Director: {juego.director}</li>
+                        <li>Año: {juego.anio}</li>
+                        <li>Mundo: {juego.mundo}</li>
+                    </ul>
+                </Link>
+            ))
+        )
+    }
+    */
+    
     let content;
     if (loading) {
         content = <Loading />;
     } else {
-        if (games.length > 0) {
+        if (games) {
             content = games.map((juego) => (
                 <Link
                     className="container__videogame"

@@ -1,4 +1,5 @@
 import '../styles/_buttons.scss';
+import refreshImg from '../images/refresh.png';
 
 function CharactersButton({ setJuegoSeleccionado }) {
     const handleClick = (juego) => {
@@ -15,6 +16,7 @@ function CharactersButton({ setJuegoSeleccionado }) {
             <button className="select-btn" onClick={() => handleClick("Final Fantasy XIII")}>XIII</button>
             <button className="select-btn" onClick={() => handleClick("Final Fantasy XV")}>XV</button>
             <button className="select-btn" onClick={() => handleClick("Final Fantasy XVI")}>XVI</button>
+            <button className="select-btn" onClick={() => handleClick(null)}><img src={refreshImg}/></button>
         </div>
     );
 }

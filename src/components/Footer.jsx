@@ -7,7 +7,7 @@ function Footer() {
         <footer className="footer">
             <ul>
                 <li><a href="https://github.com/Roissm90" target="_blank" rel="noreferrer"><img src={GithubLogo}></img></a></li>
-                <li><a href=""><img src={LinkedinLogo} target="_blank"></img></a></li>
+                <li><a href="https://www.linkedin.com/feed/" target="_blank" rel="noreferrer"><img src={LinkedinLogo}></img></a></li>
             </ul>
         </footer>
     )

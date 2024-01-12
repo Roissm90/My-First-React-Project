@@ -19,6 +19,8 @@ function Protagonist() {
 
     if (juegoSeleccionado !== null) {
         personajesFiltrados = personajes.filter((personaje) => personaje.juego === juegoSeleccionado);
+    } else {
+        personajesFiltrados = personajes;
     }
 
     return (

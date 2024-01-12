@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Menu from "./Menu";
 import Footer from "./Footer";
-import SectionApp from "./SectionApp";
+import SectionApp from "./Home";
 import DetailGame from "./DetailGame";
 import Protagonist from "./Protagonist";
 import Villains from "./Villains";
