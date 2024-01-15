@@ -100,4 +100,13 @@ form {
         border: none;
         outline: none;
     }
+
+    > a {
+        color: #fff;
+        font-weight: bold;
+
+        &:hover {
+            border-bottom: 1px solid #fff;
+        }
+    }
 }

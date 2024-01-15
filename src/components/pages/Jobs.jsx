@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import '../styles/_jobs.scss';
+import '../../styles/_jobs.scss';
 
 function Jobs() {
     const [jobs, setJobs] = useState([]);

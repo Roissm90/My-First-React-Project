@@ -1,6 +1,6 @@
-import LinkedinLogo from "../images/logo-linkedin.png";
-import GithubLogo from "../images/logo-github.png";
-import '../styles/_footer.scss';
+import LinkedinLogo from "../../images/logo-linkedin.png";
+import GithubLogo from "../../images/logo-github.png";
+import '../../styles/_footer.scss';
 
 function Footer() {
     return(

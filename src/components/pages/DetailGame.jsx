@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import '../styles/_detailGame.scss';
-import RightArrow from '../images/right-arrow.png'
-import LeftArrow from '../images/left-arrow.png'
+import '../../styles/_detailGame.scss';
+import RightArrow from '../../images/right-arrow.png'
+import LeftArrow from '../../images/left-arrow.png'
 
 function DetailGame({ videojuegos }) {
     const { id } = useParams();

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import CharactersButton from "./CharactersButton"; // Cambiado el nombre del archivo importado
-import '../styles/_characters.scss';
+import CharactersButton from "../CharactersButton"; // Cambiado el nombre del archivo importado
+import '../../styles/_characters.scss';
 
 function Protagonist() {
     const [personajes, setPersonajes] = useState([]);
     const [juegoSeleccionado, setJuegoSeleccionado] = useState(null);
 
     useEffect(() => {
-        fetch('https://node-db-ff.vercel.app/villanosFF')
+        fetch('https://node-db-ff.vercel.app/personajesFF')
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);

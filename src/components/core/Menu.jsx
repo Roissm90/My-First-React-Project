@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import BurgerMenu from "../images/burger-menu.png";
-import CloseMenu from "../images/close-menu.png";
-import '../styles/_menu.scss';
+import BurgerMenu from "../../images/burger-menu.png";
+import CloseMenu from "../../images/close-menu.png";
+import '../../styles/_menu.scss';
 import { useState } from "react";
 
 function Menu() {
@@ -19,7 +19,7 @@ function Menu() {
                 <li onClick={handleTogleMenu}><Link to="/jobs">Job´s</Link></li>
                 <li onClick={handleTogleMenu}><Link to="/invocaciones">Invocaciones</Link></li>
                 <li onClick={handleTogleMenu}><Link to="/monstruos">Monstruos</Link></li>
-                <li onClick={handleTogleMenu}><Link to="/login">Login</Link></li>
+                <li onClick={handleTogleMenu}><Link to="/login">Login/Registro</Link></li>
                 <li onClick={handleTogleMenu}><Link to="/areapersonal">Mi FF</Link></li>
                 <div className="container-close_menu" onClick={handleTogleMenu}><img src={CloseMenu} alt="" /></div>
             </ul>

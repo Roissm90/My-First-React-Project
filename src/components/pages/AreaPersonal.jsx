@@ -1,10 +1,10 @@
 import { useContext, useState, useEffect } from 'react';
-import { UserContext } from './context/userContext';
-import { PersonajesContext } from './context/personajesContext';
-import checkImg from '../images/check.png';
-import congratGif from '../images/congratulations.gif';
-import closeImg from '../images/close-menu.png';
-import '../styles/_areaPersonal.scss';
+import { UserContext } from '../context/userContext';
+import { PersonajesContext } from '../context/personajesContext';
+import checkImg from '../../images/check.png';
+import congratGif from '../../images/congratulations.gif';
+import closeImg from '../../images/close-menu.png';
+import '../../styles/_areaPersonal.scss';
 
 function AreaPersonal({ videojuegos }) {
   const { authenticatedUser } = useContext(UserContext); //para poner el bienvenido

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import Loading from './Loading'; // Asegúrate de proporcionar la ruta correcta al componente Loading
+import Loading from '../Loading'; // Asegúrate de proporcionar la ruta correcta al componente Loading
 import { Link } from 'react-router-dom';
-import '../styles/_sectionApp.scss';
+import '../../styles/_sectionApp.scss';
 
 function SectionApp({ videojuegos }) {
     const [loading, setLoading] = useState(true);

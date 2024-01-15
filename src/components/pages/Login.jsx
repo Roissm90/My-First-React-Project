@@ -1,9 +1,10 @@
-import '../styles/_login.scss';
-import ShowPasswordImg from '../images/show-password.png';
-import LoadingImage from '../images/square-enix-logo.png';
+import '../../styles/_login.scss';
+import ShowPasswordImg from '../../images/show-password.png';
+import LoadingImage from '../../images/square-enix-logo.png';
 import { useContext, useState } from 'react';
-import { UserContext } from './context/userContext';
+import { UserContext } from '../context/userContext';
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function Login() {
     const [showPassword, setShowPassword] = useState(false);
@@ -63,6 +64,7 @@ function Login() {
             </label>
             <p className={showError ? "error-message" : "hidden"}>Usuario o contraseña incorrectos</p>
             <button type="submit" onClick={validateUser}>Conectarse</button>
+            <Link to="/registro">No tengo cuenta</Link>
         </form>
     )
 }

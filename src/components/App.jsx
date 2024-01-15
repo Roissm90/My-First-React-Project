@@ -1,17 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import Menu from "./Menu";
-import Footer from "./Footer";
-import SectionApp from "./Home";
-import DetailGame from "./DetailGame";
-import Protagonist from "./Protagonist";
-import Villains from "./Villains";
-import Invocaciones from "./Invocaciones";
-import Jobs from "./Jobs";
-import Monstruos from "./Monstruos";
-import AreaPersonal from "./AreaPersonal";
+import Menu from "./core/Menu";
+import Footer from "./core/Footer";
+import SectionApp from "./pages/Home";
+import DetailGame from "./pages/DetailGame";
+import Protagonist from "./pages/Protagonist";
+import Villains from "./pages/Villains";
+import Invocaciones from "./pages/Invocaciones";
+import Jobs from "./pages/Jobs";
+import Monstruos from "./pages/Monstruos";
+import AreaPersonal from "./pages/AreaPersonal";
 import AuthRoute from "./middleware/AuthRoute";
 import { useEffect, useState } from "react";
-import Login from "./Login";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import { UserProvider } from "./context/userContext";
 import { PersonajesProvider } from "./context/personajesContext";
 
@@ -42,6 +43,7 @@ function App() {
                     <Route path="/areapersonal" element={<AuthRoute element={<AreaPersonal videojuegos={videojuegos}/>}/>}></Route>
                     <Route path="/jobs" element={<Jobs/>}></Route>
                     <Route path="/login" element={<Login/>}></Route>
+                    <Route path="/registro" element={<Register/>}></Route>
                 </Routes>
                 <Footer/>
                 </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import '../styles/_invocaciones.scss';
+import '../../styles/_invocaciones.scss';
 
 function Monstruos() {
     const [monstruos, setMonstruos] = useState([]);
