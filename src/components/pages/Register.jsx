@@ -51,7 +51,6 @@ const Register = () => {
             } catch (error) {
                 console.error("Error al registrar usuario", error);
                 // Manejar el error, mostrar mensaje de error, etc.
-                setShowError(true);
             }
         }
         
