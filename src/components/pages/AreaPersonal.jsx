@@ -20,6 +20,7 @@ function AreaPersonal({ videojuegos }) {
     ////console.log(result)
   }
   changeWelcome();
+  
   //logica de personajes aleatorios y solo 8
   const [personajesAleatorios, setPersonajesAleatorios] = useState([]);
 
@@ -29,7 +30,7 @@ function AreaPersonal({ videojuegos }) {
     setAuthenticatedUser(null);  // Limpiar el estado
     navigate('/');
   }
-
+  //logica aleatorios
   const obtenerPersonajesAleatorios = (personajes, cantidad) => {
     const juegosUtilizados = [];
     const personajesAleatorios = [];
@@ -137,9 +138,23 @@ function AreaPersonal({ videojuegos }) {
 
   const welcomeUser = authenticatedUser ? replaceDominios(authenticatedUser) : '';
 
+  //logica conteo partidas ganadas
+  const [victories, setVictories] = useState(() => JSON.parse(localStorage.getItem('victories')) || 0);
+
+  useEffect(() => {
+    if (count === 8) {
+      setVictories(prevVictories => {
+        const newVictories = prevVictories + 1;
+        localStorage.setItem('victories', JSON.stringify(newVictories));
+        return newVictories;
+      });
+    }
+  }, [count]);
+  console.log(localStorage.getItem('token'));
+
   return (
     <section className={`container-my-area ${showPopUp ? 'overflow-hidden' : ''}`}>
-        <h3>Bienvenido {welcomeUser}</h3>
+        <h3>Bienvenido {welcomeUser}, has ganado {victories} partidas.</h3>
         <input type="button" value="Cerrar Sesión" onClick={logOutUser}/>
     
         <div className='container-riddle' key={resetClasses}>
