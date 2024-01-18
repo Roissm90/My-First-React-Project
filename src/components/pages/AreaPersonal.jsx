@@ -139,18 +139,19 @@ function AreaPersonal({ videojuegos }) {
   const welcomeUser = authenticatedUser ? replaceDominios(authenticatedUser) : '';
 
   //logica conteo partidas ganadas
-  const [victories, setVictories] = useState(() => JSON.parse(localStorage.getItem('victories')) || 0);
+  const userId = localStorage.getItem('user_id');
+
+  const [victories, setVictories] = useState(() => JSON.parse(localStorage.getItem(`${userId}_victories`)) || 0);
 
   useEffect(() => {
     if (count === 8) {
       setVictories(prevVictories => {
         const newVictories = prevVictories + 1;
-        localStorage.setItem('victories', JSON.stringify(newVictories));
+        localStorage.setItem(`${userId}_victories`, JSON.stringify(newVictories));
         return newVictories;
       });
     }
   }, [count]);
-  console.log(localStorage.getItem('token'));
 
   return (
     <section className={`container-my-area ${showPopUp ? 'overflow-hidden' : ''}`}>

@@ -34,7 +34,8 @@ const Login = () => {
     event.preventDefault();
     try {
       const result = await API.post('usersff/login', formData);
-      localStorage.setItem('user', result.data.user)
+      localStorage.setItem('user', JSON.stringify(result.data.user))
+      localStorage.setItem('user_id', JSON.stringify(result.data.user._id))
       localStorage.setItem('token', result.data.token)
       //console.log('Token establecido correctamente:', localStorage.getItem('token'), 'User:', localStorage.getItem('user'));
       navigate('/areapersonal');
