@@ -1,18 +1,34 @@
 import { useContext, useState, useEffect } from 'react';
-import { UserContext } from '../context/userContext';
 import { PersonajesContext } from '../context/personajesContext';
 import checkImg from '../../images/check.png';
 import congratGif from '../../images/congratulations.gif';
 import closeImg from '../../images/close-menu.png';
 import '../../styles/_areaPersonal.scss';
+import { API } from '../axios/api';
+import { useNavigate } from 'react-router-dom';
 
 function AreaPersonal({ videojuegos }) {
-  const { authenticatedUser } = useContext(UserContext); //para poner el bienvenido
+  const navigate = useNavigate();
+  const  [authenticatedUser, setAuthenticatedUser] = useState(); //para poner el bienvenido
+  ////console.log(authenticatedUser);
   const { personajesList } = useContext(PersonajesContext); //cojo contexto de personajes
-  console.log(personajesList);
 
+  //obtener el bienvenido
+  const changeWelcome = async () => {
+    const result = await API.get('usersff/checkSession');
+    setAuthenticatedUser(result.data.email);
+    ////console.log(result)
+  }
+  changeWelcome();
   //logica de personajes aleatorios y solo 8
   const [personajesAleatorios, setPersonajesAleatorios] = useState([]);
+
+  const logOutUser = () => {
+    //console.log(localStorage.getItem('token'));
+    localStorage.removeItem('token');
+    setAuthenticatedUser(null);  // Limpiar el estado
+    navigate('/');
+  }
 
   const obtenerPersonajesAleatorios = (personajes, cantidad) => {
     const juegosUtilizados = [];
@@ -50,7 +66,7 @@ function AreaPersonal({ videojuegos }) {
       elemento1.className = 'correct';
       elemento2.className = 'correct';
       setCount(count + 1);
-      console.log(count);
+      //console.log(count);
     }
   };
 
@@ -91,20 +107,40 @@ function AreaPersonal({ videojuegos }) {
   //logica para el pop-up
   const [showPopUp, setShowPopUp] = useState(false);
 
-  const popUp = () => {
-    if (count === 8) {
-        setShowPopUp(true);
+  useEffect(() => {
+    const popUpTimeout = () => {
+      if (count === 8) {
+        setTimeout(() => {
+          setShowPopUp(true);
+        }, 500); // Mostrar el pop-up después de 1000 milisegundos (1 segundo)
+      }
     }
-  };
+    popUpTimeout(); // Llama a la función para configurar el timeout
+  }, [count]);
 
   const btnToClosePopUp = () => {
     setCount(0);
     setShowPopUp(false);
+    setResetClasses(prevResetClasses => !prevResetClasses);
+    const personajes = obtenerPersonajesAleatorios(personajesList, 8);
+    setPersonajesAleatorios(personajes);
   };
+
+  //logica reemplazo dominios
+  const dominios = ['@gmail.com', '@gmail.es', '@hotmail.com', '@hotmail.es', '@yahoo.com', '@yahoo.es', '@outlook.com', '@outlook.es'];
+
+  function replaceDominios (email) {
+    let newUser = email;
+    dominios.forEach((dominio) => newUser = newUser.replace(dominio, ''))
+    return newUser;
+  } 
+
+  const welcomeUser = authenticatedUser ? replaceDominios(authenticatedUser) : '';
 
   return (
     <section className={`container-my-area ${showPopUp ? 'overflow-hidden' : ''}`}>
-        <h3>Bienvenido, {authenticatedUser.email}</h3>
+        <h3>Bienvenido {welcomeUser}</h3>
+        <input type="button" value="Cerrar Sesión" onClick={logOutUser}/>
     
         <div className='container-riddle' key={resetClasses}>
             <div className='container__list-characters'>
@@ -129,7 +165,7 @@ function AreaPersonal({ videojuegos }) {
 
         <button className='reset-button' onClick={regenerarPersonajes}>Reiniciar</button>
 
-        <div className={`container__pop-up ${count === 8 ? 'visible' : ''}`}>
+        <div className={`container__pop-up ${showPopUp ? 'visible' : ''}`}>
             <div>
                 <img src={congratGif} alt="gif de enhorabuena" />
                 <p>¡ENHORABUENA!</p>

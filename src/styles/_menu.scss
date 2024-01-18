@@ -6,7 +6,8 @@ header.container-nav-title {
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
-    
+    background-color: #fff;
+
     > h1 {
         width: 230px;
         height: 50px;
@@ -18,6 +19,7 @@ header.container-nav-title {
         transition: all ease 0.5s;
         border-radius: 10px;
         padding: 5px 0;
+        
 
         &:hover {
             transform: scale(1.05);
@@ -27,7 +29,7 @@ header.container-nav-title {
         > a {
             width: 100%;
             height: 100%;
-            color: #fff;
+            color: #000;
 
             display: flex;
             justify-content: center;
@@ -62,7 +64,7 @@ header.container-nav-title {
             }
 
             > a {
-                color: #fff;
+                color: #000;
                 font-weight: bold;
             }
         }
@@ -108,8 +110,6 @@ header.container-nav-title {
         > img {
             width: 60%;
             height: 60%;
-
-            filter: invert(1);
         }
     }
 }

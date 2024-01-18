@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
 import '../../styles/_invocaciones.scss';
+import { API } from '../axios/api';
 
 function Monstruos() {
     const [monstruos, setMonstruos] = useState([]);
     const [expandedIndex, setExpandedIndex] = useState(-1);
 
     useEffect(() => {
-        fetch('https://node-db-ff.vercel.app/monstruosFF')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setMonstruos(data);
-            });
-    }, []);
+        const fetchApi = async () => {
+          try {
+            const result = await API.get('monstruosff');
+            setMonstruos(result.data);  // Ajuste para obtener result.data en lugar de solo result
+            //console.log(result.data);
+          } catch (error) {
+            console.error("Error fetching data from API:", error);
+          }
+        };
+    
+        fetchApi();
+      }, []);
 
     function handleFigureClick(index) {
         if (index === expandedIndex) {

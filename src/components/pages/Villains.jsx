@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import CharactersButton from "../CharactersButton"; // Cambiado el nombre del archivo importado
 import '../../styles/_characters.scss';
+import { API } from '../axios/api'; 
 
 function Protagonist() {
     const [personajes, setPersonajes] = useState([]);
@@ -8,37 +9,33 @@ function Protagonist() {
     const [personajesFiltrados, setPersonajesFiltrados] = useState([]);
 
     useEffect(() => {
-        fetch('https://node-db-ff.vercel.app/villanosFF')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setPersonajes(data);
-                setPersonajesFiltrados(data);
-            });
-    }, []);
-    /*
-    let personajesFiltrados = personajes;
-
-    if (juegoSeleccionado !== null) {
-        personajesFiltrados = personajes.filter((personaje) => personaje.juego === juegoSeleccionado);
-    } else {
-        personajesFiltrados = personajes;
-    }*/
+        const fetchApi = async () => {
+          try {
+            const result = await API.get('villanosff');
+            setPersonajes(result.data);  // Ajuste para obtener result.data en lugar de solo result
+            setPersonajesFiltrados(result.data)
+            //console.log(result.data);
+          } catch (error) {
+            console.error("Error fetching data from API:", error);
+          }
+        };
     
-    const filtrarPersonajes = () => {
-    if (juegoSeleccionado !== null) {
-      const personajesFiltrados = personajes.filter((personaje) => personaje.juego === juegoSeleccionado);
-      setPersonajesFiltrados(personajesFiltrados);
-    } else {
-      // Si no hay juego seleccionado, mostrar todos los personajes
-      setPersonajesFiltrados(personajes);
-    }
-  };
+        fetchApi();
+      }, []);
+    
+    const filtrarPersonajes = (juegoSeleccionado) => {
+        if (juegoSeleccionado !== null) {
+            const personajesFiltrados = personajes.filter((personaje) => personaje.juego === juegoSeleccionado);
+            setPersonajesFiltrados(personajesFiltrados);
+        } else {
+            setPersonajesFiltrados(personajes);
+        }
+    };
     
 
     return (
         <section className="container-personajes">
-            <CharactersButton setJuegoSeleccionado={setJuegoSeleccionado} />
+            <CharactersButton setJuegoSeleccionado={setJuegoSeleccionado} filtrarPersonajes={filtrarPersonajes}/>
             <div>
                 {personajesFiltrados.map((personaje) => (
                     <ul className="container__personaje" key={personaje._id}>

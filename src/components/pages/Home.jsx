@@ -2,54 +2,29 @@ import { useState, useEffect } from 'react';
 import Loading from '../Loading'; // Asegúrate de proporcionar la ruta correcta al componente Loading
 import { Link } from 'react-router-dom';
 import '../../styles/_sectionApp.scss';
+import { API } from '../axios/api';
 
 function SectionApp({ videojuegos }) {
     const [loading, setLoading] = useState(true);
     const [games, setGames] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('https://node-db-ff.vercel.app/videojuegosFF');
-                if (!response.ok) {
-                    throw new Error('Error al obtener los datos');
-                }
-                const data = await response.json();
-                
-                setGames(data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        };
+  useEffect(() => {
+    const fetchApi = async () => {
+      try {
+        const result = await API.get('videojuegosff');
+        setGames(result.data);  // Ajuste para obtener result.data en lugar de solo result
+        setLoading(false);
+        //console.log(result.data);
+      } catch (error) {
+        console.error("Error fetching data from API:", error);
+      }
+    };
 
-        fetchData();
-    }, []);
-
-    /*
-    const [content, setContent] = useState(<Loading/>)
-    if (games) {
-        setContent(
-            games.map((juego) => (
-                <Link
-                    className="container__videogame"
-                    key={juego._id}
-                    to={`/detail/${juego.nombre}/${juego._id}`}
-                >
-                    <img src={juego.picture} alt="portada del videojuego" />
-                    <ul className="game-info">
-                        <li>{juego.nombre}</li>
-                        <li>Director: {juego.director}</li>
-                        <li>Año: {juego.anio}</li>
-                        <li>Mundo: {juego.mundo}</li>
-                    </ul>
-                </Link>
-            ))
-        )
-    }
-    */
+    fetchApi();
+  }, []);
     
     let content;
+    
     if (loading) {
         content = <Loading />;
     } else {

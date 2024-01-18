@@ -1,71 +1,58 @@
 import "../../styles/_login.scss";
 import ShowPasswordImg from "../../images/show-password.png";
 import LoadingImage from "../../images/square-enix-logo.png";
-import { useContext, useState } from "react";
-import { UserContext } from "../context/userContext";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { API } from '../axios/api'
 
 const Register = () => {
-    const navigate = useNavigate();
-    const [showPassword, setShowPassword] = useState(false);
-    const [showError, setShowError] = useState(false);
-    const {userList} = useContext(UserContext);
-    console.log(userList);
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-    const passwordVisibility = (event) => {
-        event.preventDefault();
-        setShowPassword(!showPassword);
-      };
-    
-    const [registerForm, setRegisterForm] = useState({
-        emailInput: "",
-        passwordInput: "",
+  const [showError, setShowError] = useState(false);
+  const passwordVisibility = (event) => {
+    event.preventDefault();
+    setShowPassword(!showPassword);
+  };
+
+  const handleInput = (event) => {
+    const id = event.target.id;
+    const value = event.target.value;
+
+    setFormData({
+      ...formData,
+      [id]: value,
     });
+  };
 
-    const handleInput = (event) => {
-        const id = event.target.id;
-        const value = event.target.value;
+  const registerUser = async(event) => {
+    event.preventDefault();
+    try {
+      const result = await API.post('usersff/register', formData);
+      //console.log(result);
+      navigate('/');
+    } catch (error){
+      setShowError(true);
+      console.error(error);
+    }
     
-        setRegisterForm({
-          ...registerForm,
-          [id]: value,
-        });
-        console.log(registerForm);
-    };
-
-    const registerUser = async (event) => {
-        event.preventDefault();
-        const foundUser = userList.find((user) => user.email === registerForm.emailInput);
-        if (foundUser) {
-            setShowError(true);
-        } else {
-            try {
-                // Aquí puedes realizar la lógica de registro
-                const response = await axios.post("https://node-db-ff.vercel.app/usersFF/register", registerForm);
-    
-                // Verificar el estado de la respuesta y tomar acciones adecuadas
-                if (response.status === 201) {
-                    navigate("/areapersonal");
-                } 
-            } catch (error) {
-                console.error("Error al registrar usuario", error);
-                // Manejar el error, mostrar mensaje de error, etc.
-            }
-        }
-        
-    };
+  }
 
   return (
-    <form action="" className="container-login">
+    <form action="" className="container-login" onSubmit={registerUser}>
       <div className="container__logo">
         <img src={LoadingImage} alt="imagen de carga" />
       </div>
-      <label htmlFor="emailInput">
+      <label htmlFor="email">
         <input
           type="text"
           placeholder="Email"
-          id="emailInput"
+          id="email"
           name="email"
           required
           onChange={handleInput}
@@ -75,7 +62,7 @@ const Register = () => {
         <input
           type={showPassword ? "text" : "password"}
           placeholder="Contraseña"
-          id="passwordInput"
+          id="password"
           name="password"
           required
           onChange={handleInput}
@@ -87,9 +74,7 @@ const Register = () => {
       <p className={showError ? "error-message" : "hidden"}>
         Este usuario ya existe
       </p>
-      <button type="submit" onClick={registerUser}>
-        Regístrate
-      </button>
+      <input type="submit" value="Conectarse" />
       <Link to="/login">Ya tengo cuenta</Link>
     </form>
   );

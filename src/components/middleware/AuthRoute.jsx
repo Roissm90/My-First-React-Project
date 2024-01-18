@@ -1,13 +1,11 @@
-import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { UserContext } from "../context/userContext";
 
 function AuthRoute({ element }) {
-    const { authenticatedUser} = useContext(UserContext);
 
-    if (!authenticatedUser) {
-        return <Navigate to="/login" />;
-    } 
-    return element;
+  const token = localStorage.getItem("token");
+  ////console.log(token);
+  ////console.log(location);
+  if (token) return element;
+  if (!token) return <Navigate to="/login" />;
 }
 export default AuthRoute;

@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
 import '../../styles/_jobs.scss';
+import { API } from '../axios/api';
 
 function Jobs() {
     const [jobs, setJobs] = useState([]);
     const [expandImg, setImageJob] = useState(-1);
 
     useEffect(() => {
-        fetch('https://node-db-ff.vercel.app/trabajosFF')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setJobs(data);
-            });
-    }, []);
+        const fetchApi = async () => {
+          try {
+            const result = await API.get('trabajosff');
+            setJobs(result.data);  // Ajuste para obtener result.data en lugar de solo result
+            //console.log(result.data);
+          } catch (error) {
+            console.error("Error fetching data from API:", error);
+          }
+        };
+    
+        fetchApi();
+      }, []);
 
     function handleImageClick(index) {
         if (index === expandImg) {

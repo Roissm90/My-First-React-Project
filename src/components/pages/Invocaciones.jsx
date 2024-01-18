@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
 import '../../styles/_invocaciones.scss';
+import { API } from '../axios/api';
 
 function Invocaciones() {
     const [invocaciones, setInvocaciones] = useState([]);
     const [expandedIndex, setExpandedIndex] = useState(-1);
 
     useEffect(() => {
-        fetch('https://node-db-ff.vercel.app/invocacionesFF')
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                setInvocaciones(data);
-            });
-    }, []);
+        const fetchApi = async () => {
+          try {
+            const result = await API.get('invocacionesff');
+            setInvocaciones(result.data);  // Ajuste para obtener result.data en lugar de solo result
+            //console.log(result.data);
+          } catch (error) {
+            console.error("Error fetching data from API:", error);
+          }
+        };
+    
+        fetchApi();
+      }, []);
 
     function handleFigureClick(index) {
         if (index === expandedIndex) {
