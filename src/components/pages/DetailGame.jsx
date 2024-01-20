@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../../styles/_detailGame.scss';
 import RightArrow from '../../images/right-arrow.png'
@@ -35,6 +35,12 @@ function DetailGame({ videojuegos }) {
             prevIndex > 0 ? prevIndex - 1 : findVideojuego.villanos.length - 1
         );
     };
+
+    useEffect(() => {
+        if (!findVideojuego) {
+            navigate(-1);
+        }
+    }, [findVideojuego, navigate]);
 
     if (findVideojuego) {
         return (
@@ -79,7 +85,6 @@ function DetailGame({ videojuegos }) {
             </section>
         );
     } else {
-        navigate(-1);
         return null;
     } 
 }   
