@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CharactersButton from "../CharactersButton"; // Cambiado el nombre del archivo importado
 import '../../styles/_characters.scss';
 import { API } from '../axios/api'; 
+import { gsap } from "gsap";
 
 function Protagonist() {
     const [personajes, setPersonajes] = useState([]);
@@ -21,7 +22,15 @@ function Protagonist() {
         };
     
         fetchApi();
-      }, []);
+    }, []);
+
+    useEffect(() => {
+      // Verificar si hay personajes filtrados para evitar laanimación antes de que se muestren los resultados
+      if (personajesFiltrados.length > 0) {
+          // Animación con GSAP para cada ul con clasecontainer__personaje
+          gsap.to(".container__personaje", { opacity: 1, scale:1, duration: 1, ease: "power2.out", stagger: 0.2 });
+      }
+    }, [personajesFiltrados]);
     
     const filtrarPersonajes = (juegoSeleccionado) => {
         if (juegoSeleccionado !== null) {
@@ -36,7 +45,7 @@ function Protagonist() {
     return (
         <section className="container-personajes">
             <CharactersButton setJuegoSeleccionado={setJuegoSeleccionado} filtrarPersonajes={filtrarPersonajes}/>
-            <div>
+            <div className="content__personaje">
                 {personajesFiltrados.map((personaje) => (
                     <ul className="container__personaje" key={personaje._id}>
                         <li>{personaje.name}</li>

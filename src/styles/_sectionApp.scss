@@ -2,6 +2,7 @@ section.container-main {
     width: 100%;
     height: calc(100vh - 160px);
     overflow-y: scroll;
+    overflow-x: hidden;
 
     display: flex;
     flex-flow: row wrap;
@@ -20,6 +21,9 @@ section.container-main {
         border-radius: 20px;
         overflow: hidden;
         cursor: pointer;
+
+        transform: scale(0);
+        opacity: 0;
 
         > img {
             width: 100%;

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import CharactersButton from "../CharactersButton"; // Cambiado el nombre del archivo importado
+import CharactersButton from "../CharactersButton";
 import '../../styles/_characters.scss';
 import { API } from '../axios/api';
+import { gsap } from "gsap";
 
 function Protagonist() {
     const [personajes, setPersonajes] = useState([]);
@@ -12,17 +13,24 @@ function Protagonist() {
         const fetchApi = async () => {
           try {
             const result = await API.get('personajesff');
-            setPersonajes(result.data);  // Ajuste para obtener result.data en lugar de solo result
-            setPersonajesFiltrados(result.data)
-            //console.log(result.data);
+            setPersonajes(result.data);
+            setPersonajesFiltrados(result.data);
           } catch (error) {
             console.error("Error fetching data from API:", error);
           }
         };
     
         fetchApi();
-      }, []);
+    }, []);
 
+    useEffect(() => {
+        // Verificar si hay personajes filtrados para evitar la animación antes de que se muestren los resultados
+        if (personajesFiltrados.length > 0) {
+            // Animación con GSAP para cada ul con clase container__personaje
+            gsap.to(".container__personaje", { opacity: 1, scale: 1, duration: 1, ease: "power2.out", stagger: 0.2 });
+        }
+    }, [personajesFiltrados]);
+    
     const filtrarPersonajes = (juegoSeleccionado) => {
         if (juegoSeleccionado !== null) {
             const personajesFiltrados = personajes.filter((personaje) => personaje.juego === juegoSeleccionado);
@@ -35,7 +43,7 @@ function Protagonist() {
     return (
         <section className="container-personajes">
             <CharactersButton setJuegoSeleccionado={setJuegoSeleccionado} filtrarPersonajes={filtrarPersonajes}/>
-            <div>
+            <div className="content__personaje">
                 {personajesFiltrados.map((personaje) => (
                     <ul className="container__personaje" key={personaje._id}>
                         <li>{personaje.name}</li>

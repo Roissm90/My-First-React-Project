@@ -2,6 +2,7 @@ section.container-jobs {
     width: 100%;
     height: calc(100vh - 160px);
     overflow-y: scroll;
+    overflow-x: hidden;
 
     display: flex;
     flex-flow: row wrap;
@@ -21,6 +22,13 @@ section.container-jobs {
         cursor: pointer;
         border-radius: 10px;
         padding: 20px 0;
+
+        opacity: 0;
+        transform: translateX(-800px);
+
+        &.odd {
+            transform: translateX(800px);
+        }
 
         transition: all ease 1s;
 
